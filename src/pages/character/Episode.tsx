@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getEpisode} from "../../../api/GET";
+import {getEpisode} from "../../api/GET";
 
 type episodeType = {
     id:number

@@ -1,6 +1,6 @@
 import Home from "../pages/home/Home";
 import About from "../pages/about/About";
-import Character from "../pages/Character";
+import Character from "../pages/character/Character";
 
 const appRouter = [
     {
