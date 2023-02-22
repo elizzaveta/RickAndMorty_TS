@@ -1,0 +1,29 @@
+.cardWrapper{
+    background: rgb(60 62 68);
+    display: flex;
+    color: white;
+    gap: 10px;
+    border-radius: 10px;
+}
+.cardWrapper img{
+    height: 100%;
+}
+.status{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.cardWrapper a{
+    color: white;
+    text-decoration: none;
+}
+
+@media (min-width: 1000px) {
+    .cardWrapper{
+        width: 500px;
+        height: 220px;
+    }
+    .cardWrapper img{
+        border-radius: 10px 0 0 10px;
+    }
+}
