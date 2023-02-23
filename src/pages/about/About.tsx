@@ -9,9 +9,8 @@ const About = () => {
             <p>Library of the television show "Rick and Morty" characters.</p>
             <h2>Features</h2>
             <ul>
-                <li>Characters Catalog</li>
+                <li>Characters & Episodes Catalog</li>
                 <li>Pagination</li>
-                <li>Character page</li>
                 <li>Search Bar</li>
             </ul>
             <h2>Technologies</h2>
