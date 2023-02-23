@@ -3,7 +3,10 @@ export type catalogProps = {
     info: infoProps
     characters: characterProps[]
 }
-
+export type episodesProps = {
+    info: infoProps
+    episodes: episodeType[]
+}
 export type infoProps = {
     count: number
     next: string
@@ -31,5 +34,15 @@ export type characterProps = {
     status: string
     type: string
     url: string
+}
+export type episodeType = {
+    id:number
+    name: string
+    air_date: string
+    episode: string
+    characters: string[]
+    url: string
+    created: string
+
 }
 

@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {getCatalog} from "../../api/GET";
 import CharacterCard from "./CharacterCard";
-import {catalogProps} from "../../consts/propsTypes";
+import {catalogProps} from "../../consts/apiResponseTypes";
 import styles from "../../styles/css/pages/home/Catalog.module.css"
-import {useParams, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 import Pagination from "../../components/Pagination";
-import {type} from "os";
 
 
 const Catalog = () => {
@@ -14,7 +13,6 @@ const Catalog = () => {
 
     useEffect(() => {
         (async function fetchCatalog() {
-            console.log(searchParams)
             const response = await getCatalog(window.location.search);
             const data = await response.json();
             setCatalog({
@@ -26,7 +24,8 @@ const Catalog = () => {
     }, [searchParams])
     return (
         <div className={styles.wrapper}>
-            <div id="catalogTog" className={`container ${styles.totalCharacters}`}>
+            <div id="topView"></div>
+            <div className={`container ${styles.totalCharacters}`}>
                 Total characters: {catalog?.info.count}
             </div>
             <div className={`container ${styles.cardsWrapper}`}>
@@ -36,7 +35,7 @@ const Catalog = () => {
                     );
                 })}
             </div>
-            <Pagination pages={catalog?.info.pages}/>
+            <Pagination pages={catalog?.info.pages} path=""/>
         </div>
     );
 };

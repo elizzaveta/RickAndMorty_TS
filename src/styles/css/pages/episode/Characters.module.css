@@ -1,0 +1,20 @@
+.image{
+    height: 100px;
+    border-radius: 5px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.charactersGrid{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.characterContainer{
+    width: min-content;
+}
+.link{
+    color: white;
+}

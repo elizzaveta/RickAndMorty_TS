@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {characterProps} from "../../consts/propsTypes";
+import {characterProps} from "../../consts/apiResponseTypes";
 import {useParams} from "react-router-dom";
 import {getCharacter} from "../../api/GET";
 import styles from "../../styles/css/pages/character/Character.module.css"
@@ -15,7 +15,6 @@ const Character = () => {
             const response = await getCharacter(id);
             const data = await response.json();
             setCharacter(await data);
-            console.log(await data)
         })();
     }, [id])
     const renderStatusCircle = (status: string) => {

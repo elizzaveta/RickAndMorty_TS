@@ -7,6 +7,7 @@ import PaginationPagesDisplay from "./PaginationPagesDisplay";
 
 type propsType = {
     pages: number | undefined
+    path: string
 }
 const Pagination = (props: propsType) => {
     const {pages} = props;
@@ -26,13 +27,13 @@ const Pagination = (props: propsType) => {
             }
         }
         searchParams.set("page", String(targetPage) )
-        navigation(`/?${searchParams}`)
-        document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
+        navigation(`${props.path}/?${searchParams}`)
+        document.getElementById("topView")?.scrollIntoView({behavior: "smooth"})
     }
     return (
         <div className={styles.wrapper}>
             <ArrowPrev onClick={() => handlePagination("prev")}/>
-            <PaginationPagesDisplay page={page} total={pages}/>
+            <PaginationPagesDisplay page={page} total={pages} path={props.path}/>
             <ArrowNext onClick={() => handlePagination("next")}/>
         </div>
     );

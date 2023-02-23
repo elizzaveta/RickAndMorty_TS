@@ -13,8 +13,9 @@ const Header = () => {
                 </div>
             </Link>
             <div className={styles.rightItems}>
-                <SearchBar/>
+                <Link to="/episodes"><h4>Episodes</h4></Link>
                 <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
+                <SearchBar/>
             </div>
         </header>
     );

@@ -1,0 +1,11 @@
+.wrapper{
+    background: rgb(39, 43, 51);
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.episodeInfoContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

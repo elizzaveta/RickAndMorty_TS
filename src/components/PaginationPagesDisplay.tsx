@@ -2,18 +2,18 @@ import React, {useEffect, useState} from 'react';
 import styles from "../styles/css/components/Pagination.module.css"
 import {useNavigate, useSearchParams} from "react-router-dom";
 
-const PaginationPagesDisplay = (props: { page: number, total: number | undefined }) => {
+const PaginationPagesDisplay = (props: { page: number, total: number | undefined, path:string }) => {
     const {page, total} = props;
     let pagination;
     if (total && total < 12) {
-        pagination = <DisplayPlain page={page} total={total}/>
+        pagination = <DisplayPlain page={page} total={total} path={props.path}/>
     } else if (total) {
         if (page < 8) {
-            pagination = <DisplayLeft page={page} total={total}/>
+            pagination = <DisplayLeft page={page} total={total} path={props.path}/>
         } else if (page > 34) {
-            pagination = <DisplayRight page={page} total={total}/>
+            pagination = <DisplayRight page={page} total={total} path={props.path}/>
         } else {
-            pagination = <DisplayCenter page={page} total={total}/>
+            pagination = <DisplayCenter page={page} total={total} path={props.path}/>
         }
     }
 
@@ -23,24 +23,24 @@ const PaginationPagesDisplay = (props: { page: number, total: number | undefined
         </div>
     );
 };
-const DisplayPlain = (props: { page: number, total: number }) => {
+const DisplayPlain = (props: { page: number, total: number, path:string }) => {
     let array = new Array(props.total);
     for (let i = 1; i <= props.total; i++) {
         array.push(i);
     }
     return (
-        <DisplayPages currentPage={props.page} left={array}/>
+        <DisplayPages currentPage={props.page} left={array} path={props.path}/>
     )
 }
-const DisplayLeft = (props: { page: number, total: number }) => {
+const DisplayLeft = (props: { page: number, total: number, path:string }) => {
     const arrayLeft = [1, 2, 3, 4, 5, 6, 7, 8];
     const arrayRight = [props.total - 1, props.total];
 
     return (
-        <DisplayPages currentPage={props.page} left={arrayLeft} right={arrayRight}/>
+        <DisplayPages currentPage={props.page} left={arrayLeft} right={arrayRight} path={props.path}/>
     )
 }
-const DisplayRight = (props: { page: number, total: number }) => {
+const DisplayRight = (props: { page: number, total: number, path:string }) => {
     const arrayLeft = [1, 2];
     const arrayRight = new Array(8);
     for (let i = props.total; i >= props.total - 8; i--) {
@@ -48,10 +48,10 @@ const DisplayRight = (props: { page: number, total: number }) => {
     }
 
     return (
-        <DisplayPages currentPage={props.page} left={arrayLeft} right={arrayRight}/>
+        <DisplayPages currentPage={props.page} left={arrayLeft} right={arrayRight} path={props.path}/>
     )
 }
-const DisplayCenter = (props: { page: number, total: number }) => {
+const DisplayCenter = (props: { page: number, total: number, path:string }) => {
     let [searchParams, setSearchParams] = useSearchParams();
     const page: number = parseInt(searchParams.get("page") || '1')
 
@@ -60,11 +60,11 @@ const DisplayCenter = (props: { page: number, total: number }) => {
     const arrayRight = [props.total - 1, props.total];
     const arrayCenter = [page - 2, page - 1, page, page + 1, page + 2]
     return (
-        <DisplayPages currentPage={props.page} left={arrayLeft} center={arrayCenter} right={arrayRight}/>
+        <DisplayPages currentPage={props.page} left={arrayLeft} center={arrayCenter} right={arrayRight} path={props.path}/>
     )
 }
 
-const DisplayPages = (props: { currentPage: number, left: number[], right?: number[], center?: number[] }) => {
+const DisplayPages = (props: { currentPage: number, left: number[], right?: number[], center?: number[], path:string }) => {
     let navigate = useNavigate();
     let [searchParams, setSearchParams] = useSearchParams();
     const page = parseInt(searchParams.get("page")||"1");
@@ -83,8 +83,8 @@ const DisplayPages = (props: { currentPage: number, left: number[], right?: numb
 
     const handleNavigation = (page: number) => {
         searchParams.set("page", String(page) )
-        navigate(`/?${searchParams}`)
-        document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
+        navigate(`${props.path}/?${searchParams}`)
+        document.getElementById("topView")?.scrollIntoView({behavior: "smooth"})
     }
     return (
         <>

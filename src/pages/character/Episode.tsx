@@ -1,36 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {getEpisode} from "../../api/GET";
+import React from 'react';
+import {episodeType} from "../../consts/apiResponseTypes";
+import {Link} from "react-router-dom";
+import styles from "../../styles/css/pages/character/Episodes.module.css"
 
-type episodeType = {
-    id:number
-    name: string
-    air_date: string
-    episode: string
-    characters: string[]
-    url: string
-    created: string
 
-}
 
-const Episode = (props: {episode: string}) => {
+const Episode = (props: {episode: episodeType}) => {
     const {episode} = props;
-    const [episodeInfo, setEpisodeInfo] = useState<episodeType>();
 
-    useEffect(()=>{
-        (async function (){
-            const response = await getEpisode(episode);
-            const data = await response.json();
-            setEpisodeInfo(await data);
-        })()
-    }, [episode])
     return (
-        <>
-            {episodeInfo &&
-                <div>
-                    <p>{episodeInfo.episode}: {episodeInfo.name}</p>
-                </div>
-            }
-        </>
+        <Link className={`clickableText ${styles.link}`} to={`/episode/${episode.id}`}><p>{episode.episode}: {episode.name}</p></Link>
+
     );
 };
 

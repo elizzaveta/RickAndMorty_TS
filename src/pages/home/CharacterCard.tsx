@@ -1,5 +1,5 @@
 import React from 'react';
-import {characterProps} from "../../consts/propsTypes";
+import {characterProps} from "../../consts/apiResponseTypes";
 import styles from "../../styles/css/pages/home/CharacterCard.module.css"
 import StatusCircle from "../../components/StatusCircle";
 import {ColorEnum} from "../../enums/colorEnum";

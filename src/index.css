@@ -14,8 +14,17 @@ code {
 .clickableText:hover{
   color: orange;
 }
+.clickableText{
+  text-decoration: none;
+}
 p,h1,h2,h3,h4,h5{
   margin: 0;
+}
+.whiteText{
+  color: white;
+}
+.orangeText{
+  color: orange;
 }
 
 /* medea queries */
