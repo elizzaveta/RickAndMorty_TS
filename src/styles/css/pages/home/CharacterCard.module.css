@@ -5,9 +5,7 @@
     gap: 10px;
     border-radius: 10px;
 }
-.cardWrapper img{
-    height: 100%;
-}
+
 .status{
     display: flex;
     align-items: center;
@@ -17,13 +15,37 @@
     color: white;
     text-decoration: none;
 }
-
-@media (min-width: 1000px) {
+@media (min-width: 1440px) {
     .cardWrapper{
         width: 500px;
         height: 220px;
     }
     .cardWrapper img{
+        height: 100%;
+    }
+}
+@media (max-width: 1440px) {
+    .cardWrapper{
+        width: 350px;
+        height: 180px;
+    }
+    .cardWrapper img{
         border-radius: 10px 0 0 10px;
+    }
+    .cardWrapper img{
+        height: 100%;
+    }
+}
+@media (max-width: 930px) {
+    .cardWrapper{
+        width: 200px;
+        height: 310px;
+        flex-direction: column;
+    }
+    .cardWrapper img{
+        border-radius: 10px 10px 0 0;
+    }
+    .cardWrapper img{
+        width: 100%;
     }
 }
