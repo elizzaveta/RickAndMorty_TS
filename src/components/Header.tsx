@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../css/components/Header.module.css"
+import styles from "../styles/css/components/Header.module.css"
 import {Link} from "react-router-dom";
 import SearchBar from "./SearchBar";
 

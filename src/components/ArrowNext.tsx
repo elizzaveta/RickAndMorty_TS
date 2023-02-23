@@ -1,6 +1,6 @@
 import React from 'react';
 import nextIcon from "../images/nextIcon.png"
-import styles from "../css/components/ArrowNext.module.css"
+import styles from "../styles/css/components/ArrowNext.module.css"
 
 const ArrowNext = (props:{onClick?:()=>void}) => {
     return (

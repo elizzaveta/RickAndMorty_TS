@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import styles from "../css/components/Pagination.module.css"
+import styles from "../styles/css/components/Pagination.module.css"
 import {useNavigate, useSearchParams} from "react-router-dom";
 
 const PaginationPagesDisplay = (props: { page: number, total: number | undefined }) => {

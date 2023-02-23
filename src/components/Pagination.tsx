@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import ArrowPrev from "./ArrowPrev";
 import ArrowNext from "./ArrowNext";
-import styles from "../css/components/Pagination.module.css"
+import styles from "../styles/css/components/Pagination.module.css"
 import PaginationPagesDisplay from "./PaginationPagesDisplay";
 
 type propsType = {

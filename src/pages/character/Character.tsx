@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {characterProps} from "../../consts/propsTypes";
 import {useParams} from "react-router-dom";
 import {getCharacter} from "../../api/GET";
-import styles from "../../css/pages/character/Character.module.css"
+import styles from "../../styles/css/pages/character/Character.module.css"
 import CharacterEpisodes from "./CharacterEpisodes";
 
 const Character = () => {

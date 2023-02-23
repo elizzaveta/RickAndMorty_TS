@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getCatalog} from "../../api/GET";
 import CharacterCard from "./CharacterCard";
 import {catalogProps} from "../../consts/propsTypes";
-import styles from "../../css/pages/home/Catalog.module.css"
+import styles from "../../styles/css/pages/home/Catalog.module.css"
 import {useParams, useSearchParams} from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import {type} from "os";

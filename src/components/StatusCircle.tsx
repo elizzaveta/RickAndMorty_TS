@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../css/components/StatusCircle.module.css"
+import styles from "../styles/css/components/StatusCircle.module.css"
 import {ColorEnum} from "../enums/colorEnum";
 
 type propsType={

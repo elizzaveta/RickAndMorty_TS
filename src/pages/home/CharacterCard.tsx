@@ -1,6 +1,6 @@
 import React from 'react';
 import {characterProps} from "../../consts/propsTypes";
-import styles from "../../css/pages/home/CharacterCard.module.css"
+import styles from "../../styles/css/pages/home/CharacterCard.module.css"
 import StatusCircle from "../../components/StatusCircle";
 import {ColorEnum} from "../../enums/colorEnum";
 import {Link} from "react-router-dom";
