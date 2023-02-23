@@ -10,7 +10,7 @@ const appRouter = [
     },
     {
         id: 2,
-        path: "/page/:page",
+        path: "/:searchQuery",
         component: Home
     },
     {

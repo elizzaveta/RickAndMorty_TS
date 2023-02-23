@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "../css/components/Pagination.module.css"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 const PaginationPagesDisplay = (props: { page: number, total: number | undefined }) => {
     const {page, total} = props;
@@ -52,7 +52,10 @@ const DisplayRight = (props: { page: number, total: number }) => {
     )
 }
 const DisplayCenter = (props: { page: number, total: number }) => {
-    const {page} = props;
+    let [searchParams, setSearchParams] = useSearchParams();
+    const page: number = parseInt(searchParams.get("page") || '1')
+
+
     const arrayLeft = [1, 2];
     const arrayRight = [props.total - 1, props.total];
     const arrayCenter = [page - 2, page - 1, page, page + 1, page + 2]
@@ -63,27 +66,31 @@ const DisplayCenter = (props: { page: number, total: number }) => {
 
 const DisplayPages = (props: { currentPage: number, left: number[], right?: number[], center?: number[] }) => {
     let navigate = useNavigate();
-    const [currentPage, setCurrentPage] = useState(props.currentPage)
+    let [searchParams, setSearchParams] = useSearchParams();
+    const page = parseInt(searchParams.get("page")||"1");
+
+    const [currentPage, setCurrentPage] = useState(page)
 
     useEffect(() => {
-        const prevPageElement: HTMLElement | null = document.getElementById('page'+currentPage);
-        const currentPageElement: HTMLElement | null = document.getElementById('page'+props.currentPage);
+        const prevPageElement: HTMLElement | null = document.getElementById('page' + currentPage);
+        const currentPageElement: HTMLElement | null = document.getElementById('page' + page);
         if (currentPageElement && prevPageElement) {
             prevPageElement.className = "";
             currentPageElement.className = styles.currentPage
         }
         setCurrentPage(props.currentPage)
-    },[currentPage, props.currentPage])
+    }, [currentPage, searchParams])
 
-    const handleNavigation = (page: number) =>{
-        navigate(`/page/${page}`);
+    const handleNavigation = (page: number) => {
+        searchParams.set("page", String(page) )
+        navigate(`/?${searchParams}`)
         document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
     }
     return (
         <>
             {props.left.map((page) => {
                 return (
-                    <p key={page} id={'page'+page} onClick={() => {
+                    <p key={page} id={'page' + page} onClick={() => {
                         handleNavigation(page)
                     }}>{page}</p>
                 )
@@ -91,7 +98,7 @@ const DisplayPages = (props: { currentPage: number, left: number[], right?: numb
             {props.center && <p>...</p>}
             {props.center && props.center.map((page) => {
                 return (
-                    <p key={page} id={'page'+page} onClick={() => {
+                    <p key={page} id={'page' + page} onClick={() => {
                         handleNavigation(page)
                     }}>{page}</p>
                 )
@@ -99,7 +106,7 @@ const DisplayPages = (props: { currentPage: number, left: number[], right?: numb
             {props.right && <p>...</p>}
             {props.right && props.right.map((page) => {
                 return (
-                    <p key={page} id={'page'+page} onClick={() => {
+                    <p key={page} id={'page' + page} onClick={() => {
                         handleNavigation(page)
                     }}>{page}</p>
                 )

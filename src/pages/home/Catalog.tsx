@@ -3,17 +3,20 @@ import {getCatalog} from "../../api/GET";
 import CharacterCard from "./CharacterCard";
 import {catalogProps} from "../../consts/propsTypes";
 import styles from "../../css/pages/home/Catalog.module.css"
-import {useParams} from "react-router-dom";
+import {useParams, useSearchParams} from "react-router-dom";
 import Pagination from "../../components/Pagination";
+import {type} from "os";
 
 
 const Catalog = () => {
     const [catalog, setCatalog] = useState<catalogProps>();
-    const {page} = useParams();
+    const queryParams = new URLSearchParams(window.location.search);
+    let [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         (async function fetchCatalog() {
-            const response = await getCatalog(page);
+            console.log(searchParams)
+            const response = await getCatalog(window.location.search);
             const data = await response.json();
             setCatalog({
                 info: await data.info,
@@ -21,7 +24,7 @@ const Catalog = () => {
             })
         })();
 
-    }, [page])
+    }, [searchParams])
     return (
         <div className={styles.wrapper}>
             <div id="catalogTog" className={`container ${styles.totalCharacters}`}>

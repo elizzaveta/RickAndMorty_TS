@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import ArrowPrev from "./ArrowPrev";
 import ArrowNext from "./ArrowNext";
 import styles from "../css/components/Pagination.module.css"
@@ -10,37 +10,29 @@ type propsType = {
 }
 const Pagination = (props: propsType) => {
     const {pages} = props;
-    const {page} = useParams();
+    let [searchParams, setSearchParams] = useSearchParams();
+    const page = parseInt(searchParams.get("page")||"1");
     const navigation = useNavigate();
-    let pageInt: number;
-
-    if (!page) {
-        pageInt = 1;
-    } else {
-        pageInt = parseInt(page as string);
-    }
-
 
     const handlePagination = (type: string) => {
+        let targetPage:number = page;
         if (type === "prev") {
-            if (pageInt > 1) {
-                navigation(`/page/${pageInt - 1}`)
-                document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
+            if (page > 1) {
+                targetPage--;
             }
         } else {
-            if (pages && pageInt < pages) {
-                navigation(`/page/${pageInt + 1}`)
-                document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
+            if (pages && page < pages) {
+                targetPage++;
             }
         }
-
-
-
+        searchParams.set("page", String(targetPage) )
+        navigation(`/?${searchParams}`)
+        document.getElementById("catalogTog")?.scrollIntoView({behavior: "smooth"})
     }
     return (
         <div className={styles.wrapper}>
             <ArrowPrev onClick={() => handlePagination("prev")}/>
-            <PaginationPagesDisplay page={pageInt} total={pages}/>
+            <PaginationPagesDisplay page={page} total={pages}/>
             <ArrowNext onClick={() => handlePagination("next")}/>
         </div>
     );
