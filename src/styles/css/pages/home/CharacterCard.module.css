@@ -29,11 +29,14 @@
         width: 350px;
         height: 180px;
     }
-    .cardWrapper img{
-        border-radius: 10px 0 0 10px;
-    }
+
     .cardWrapper img{
         height: 100%;
+    }
+}
+@media (min-width: 930px) {
+    .cardWrapper img{
+        border-radius: 10px 0 0 10px;
     }
 }
 @media (max-width: 930px) {
