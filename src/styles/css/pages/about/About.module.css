@@ -1,9 +1,21 @@
 .wrapper h1{
     margin-bottom: 1.2rem;
+    color: orange;
 }
 .wrapper h2{
     margin-bottom: 0.5rem;
+    color: orange;
 }
 .wrapper p{
     margin-bottom: 1rem;
+}
+.wrapper *{
+    color: white;
+}
+
+.wrapper{
+    background: rgb(60 62 68);
+    padding-top: 20px ;
+    padding-bottom: 20px ;
+    border-bottom: 1px solid black;
 }

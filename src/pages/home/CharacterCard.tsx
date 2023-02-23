@@ -27,7 +27,7 @@ const CharacterCard = (props: propsType) => {
                 <img src={character.image} alt={`${character.name} image`}/>
             </div>
             <div>
-                <Link to={`/character/${character.id}`}><h2>{character.name}</h2></Link>
+                <Link to={`/character/${character.id}`} className={`clickableText`}><h2 className={styles.clickable}>{character.name}</h2></Link>
                 <div className={styles.status}>
                     <StatusCircle color={renderStatusCircle(character.status)}/>
                     <p>{character.status}</p>

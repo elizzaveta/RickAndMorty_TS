@@ -11,6 +11,7 @@ const About = () => {
             <ul>
                 <li>Characters Catalog</li>
                 <li>Pagination</li>
+                <li>Character page</li>
                 <li>Search Bar</li>
             </ul>
             <h2>Technologies</h2>

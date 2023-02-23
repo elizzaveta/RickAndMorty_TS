@@ -4,6 +4,8 @@ import {useParams} from "react-router-dom";
 import {getCharacter} from "../../api/GET";
 import styles from "../../styles/css/pages/character/Character.module.css"
 import CharacterEpisodes from "./CharacterEpisodes";
+import StatusCircle from "../../components/StatusCircle";
+import {ColorEnum} from "../../enums/colorEnum";
 
 const Character = () => {
     const {id} = useParams();
@@ -16,6 +18,16 @@ const Character = () => {
             console.log(await data)
         })();
     }, [id])
+    const renderStatusCircle = (status: string) => {
+        switch (status) {
+            case "Alive":
+                return ColorEnum.GREEN;
+            case "Dead":
+                return ColorEnum.RED;
+            default:
+                return ColorEnum.GRAY;
+        }
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -26,7 +38,7 @@ const Character = () => {
                         <div className={styles.mainInfo}>
                             <h1>{character.name}</h1>
                             <div>
-                                <p><b>Status:</b> {character.status}</p>
+                                <div className={styles.rowDisplay}><b>Status:</b> <StatusCircle color={renderStatusCircle(character.status)}/> {character.status}</div>
                                 <p><b>Species:</b> {character.species}</p>
                                 <p><b>Gender:</b> {character.gender}</p>
                             </div>

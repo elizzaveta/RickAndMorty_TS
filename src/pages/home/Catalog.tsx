@@ -10,7 +10,6 @@ import {type} from "os";
 
 const Catalog = () => {
     const [catalog, setCatalog] = useState<catalogProps>();
-    const queryParams = new URLSearchParams(window.location.search);
     let [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {

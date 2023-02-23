@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 const Header = () => {
     return (
         <header className={styles.header}>
-            <Link to="/">
+            <Link to="/" className={`clickableText`}>
                 <div>
                     <h3>Rick & Morty</h3>
                     <p>Characters library</p>
@@ -14,7 +14,7 @@ const Header = () => {
             </Link>
             <div className={styles.rightItems}>
                 <SearchBar/>
-                <Link to="/about"><h4>About</h4></Link>
+                <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
             </div>
         </header>
     );
