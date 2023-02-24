@@ -10,18 +10,14 @@ const SearchBar = () => {
         setSearchQuery(event.currentTarget.value)
     }
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === "Enter" && searchQuery) {
-            event.currentTarget.value = ''
-            event.currentTarget.blur()
-            navigation(`/?name=${searchQuery}`)
-        }
+        if (event.code === "Enter") handleSubmit(event.currentTarget);
     };
 
-    const handleSubmit = ()=>{
-        let search = document.getElementById("searchBar") as HTMLInputElement;
-        if(search && searchQuery){
-            search.value = '';
-            search.blur()
+    const handleSubmit = (target?:HTMLInputElement):void=>{
+        if(!target) target= document.getElementById("searchBar") as HTMLInputElement;
+        if(searchQuery){
+            target.value = '';
+            target.blur()
             navigation(`/?name=${searchQuery}`)
 
         }
@@ -31,7 +27,7 @@ const SearchBar = () => {
     return (
         <div className={styles.wrapper}>
             <input id="searchBar" className={styles.input} placeholder="Search..." type="text" onChange={handleChange} onKeyDown={handleKeyDown}/>
-            <img className={styles.searchIcon} src={searchIcon} onClick={handleSubmit}/>
+            <img className={styles.searchIcon} src={searchIcon} onClick={()=>{handleSubmit()}}/>
         </div>
     );
 };
