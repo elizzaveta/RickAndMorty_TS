@@ -1,0 +1,19 @@
+.input{
+    background: #80808026;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 30px;
+}
+.searchIcon{
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    padding: 5px;
+    z-index: 2;
+    height: 15px;
+    width: 15px;
+}
+.wrapper{
+    position: relative;
+}
