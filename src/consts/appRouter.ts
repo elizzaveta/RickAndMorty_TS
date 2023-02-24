@@ -3,6 +3,7 @@ import About from "../pages/about/About";
 import Character from "../pages/character/Character";
 import Episode from "../pages/episode/Episode";
 import Episodes from "../pages/episodes/Episodes";
+import NotFound from "../components/NotFound";
 
 const appRouter = [
     {
@@ -39,6 +40,11 @@ const appRouter = [
         id: 7,
         path: '/episodes/:searchQuery',
         component: Episodes
+    },
+    {
+        id:8,
+        path: "*",
+        component: NotFound
     }
 ]
 

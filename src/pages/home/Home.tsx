@@ -5,7 +5,6 @@ import Catalog from "./Catalog";
 const Home = () => {
     return (
         <>
-            <Hero/>
             <Catalog/>
         </>
     );
