@@ -10,7 +10,7 @@ const Menu = () => {
     const [location] = useSearchParams()
 
     window.addEventListener("resize", () => {
-        if (window.innerWidth < 700) {
+        if (window.innerWidth < 850) {
             setShowIcon(true);
         }
         else {
@@ -33,12 +33,14 @@ const Menu = () => {
                 ? <div className={styles.iconWrapper}><img className={styles.icon} src={menuIcon} alt="menuIcon" onClick={handleMenuClick}/></div>
                 :<div className={styles.flexItems}>
                     <Link to="/episodes" className={`clickableText`}><h4>Episodes</h4></Link>
+                    <Link to="/locations" className={`clickableText`} onClick={handleMenuClick}><h4>Locations</h4></Link>
                     <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
                     <SearchBar/>
                 </div>
             }
             <div id="menu" className={`container ${styles.menu} ${toggleMenu? styles.toggle:''}`}>
                 <Link to="/episodes" className={`clickableText`} onClick={handleMenuClick}><h4>Episodes</h4></Link>
+                <Link to="/locations" className={`clickableText`} onClick={handleMenuClick}><h4>Locations</h4></Link>
                 <Link to="/about" className={`clickableText`} onClick={handleMenuClick}><h4>About</h4></Link>
                 <SearchBar/>
             </div>

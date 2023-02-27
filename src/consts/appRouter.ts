@@ -4,6 +4,8 @@ import Character from "../pages/character/Character";
 import Episode from "../pages/episode/Episode";
 import Episodes from "../pages/episodes/Episodes";
 import NotFound from "../components/NotFound";
+import Location from "../pages/location/Location";
+import Locations from "../pages/locations/Locations";
 
 const appRouter = [
     {
@@ -42,7 +44,17 @@ const appRouter = [
         component: Episodes
     },
     {
-        id:8,
+      id:8,
+      path: '/locations/:id',
+      component: Location
+    },
+    {
+      id:9,
+      path: '/locations',
+      component: Locations
+    },
+    {
+        id:10,
         path: "*",
         component: NotFound
     }

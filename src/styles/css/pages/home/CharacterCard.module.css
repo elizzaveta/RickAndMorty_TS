@@ -42,7 +42,7 @@
 }
 @media (max-width: 930px) {
     .cardWrapper{
-        width: 200px;
+        width: 170px;
         height: 310px;
         flex-direction: column;
     }

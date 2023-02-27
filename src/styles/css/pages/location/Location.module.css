@@ -1,0 +1,8 @@
+.wrapper{
+    background: var(--primary);
+    color: var(--contrast);
+    padding-top: 20px;
+}
+.title{
+    color: var(--orange);
+}

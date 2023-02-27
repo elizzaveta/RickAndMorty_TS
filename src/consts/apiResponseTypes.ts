@@ -7,6 +7,10 @@ export type episodesProps = {
     info: infoProps
     episodes: episodeType[]
 }
+export type locationsProps = {
+    info: infoProps
+    locations: locationType[]
+}
 export type infoProps = {
     count: number
     next: string
@@ -43,6 +47,14 @@ export type episodeType = {
     characters: string[]
     url: string
     created: string
-
+}
+export type locationType = {
+    id: number,
+    name: string,
+    type: string
+    dimension: string
+    residents: string[]
+    url: string
+    created: string
 }
 

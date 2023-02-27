@@ -18,7 +18,6 @@ const Characters = (props: { charactersIds: number[] }) => {
 
     return (
         <div className={styles.wrapper}>
-            <h2>Characters</h2>
             <div className={styles.charactersGrid}>
                 {characters && characters?.map((character) => {
                     return (

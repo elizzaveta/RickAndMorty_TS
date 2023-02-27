@@ -9,9 +9,10 @@ const About = () => {
             <p>Library of the television show "Rick and Morty" characters.</p>
             <h2>Features</h2>
             <ul>
-                <li>Characters & Episodes Catalog</li>
+                <li>Characters & Episodes & Locations Catalog</li>
                 <li>Pagination</li>
                 <li>Search Bar</li>
+                <li>Dark & Light UI Themes</li>
             </ul>
             <h2>Technologies</h2>
             <p>Website is written with <b>React.js</b> and <b>Typescript</b> and deployed on <b>Vercel</b>.</p>

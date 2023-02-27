@@ -31,8 +31,8 @@ const Character = () => {
                     <img className={styles.image} src={character.image} alt={character.name}/>
                     <div className={styles.mainInfo}>
                         <CharacterMainInfo character={character}/>
-                        <CharacterLocations locationName={character.location.name}
-                                            originName={character.origin.name}/>
+                        <CharacterLocations location={character.location}
+                                            origin={character.origin}/>
                         <CharacterEpisodes episodes={character.episode}/>
                     </div>
                 </div>

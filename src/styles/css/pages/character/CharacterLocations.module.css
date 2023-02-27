@@ -5,3 +5,6 @@
     display: flex;
     gap: 20px;
 }
+.wrapper a{
+    color: var(--contrast);
+}

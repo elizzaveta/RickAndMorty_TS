@@ -24,3 +24,9 @@ export const getEpisodes = (query: string) => {
 export const getEpisodesCatalog = (query: string) => {
     return GET(apiBaseURL + apiEndpoints.episodes + '?' + query);
 }
+export const getLocation = (id: string|undefined) => {
+    return GET(apiBaseURL + apiEndpoints.locations + '/' + id);
+}
+export const getLocationsCatalog = (query: string) => {
+    return GET(apiBaseURL + apiEndpoints.locations + '?' + query);
+}

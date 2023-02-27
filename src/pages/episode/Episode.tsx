@@ -34,6 +34,7 @@ const Episode = () => {
                         <h1>{episode.episode} : {episode.name}</h1>
                         <p><b>Release Date:</b> {episode.air_date}</p>
                     </div>
+                    <h2>Characters:</h2>
                     {characters && <Characters charactersIds={characters}/>}
                 </div>
                 : alt
