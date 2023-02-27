@@ -33,7 +33,7 @@ const Menu = () => {
                 ? <div className={styles.iconWrapper}><img className={styles.icon} src={menuIcon} alt="menuIcon" onClick={handleMenuClick}/></div>
                 :<div className={styles.flexItems}>
                     <Link to="/episodes" className={`clickableText`}><h4>Episodes</h4></Link>
-                    <Link to="/locations" className={`clickableText`} onClick={handleMenuClick}><h4>Locations</h4></Link>
+                    <Link to="/locations" className={`clickableText`}><h4>Locations</h4></Link>
                     <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
                     <SearchBar/>
                 </div>
