@@ -3,6 +3,11 @@
     justify-content: space-between;
     padding-top: 15px;
     padding-bottom: 15px;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+    /*align-items: center;*/
 }
 .header a{
     text-decoration: none;

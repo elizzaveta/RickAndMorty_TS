@@ -18,7 +18,7 @@ body {
 
 }
 .light-theme{
-  --primary: rgb(232 234 244);
+  --primary: rgb(244 245 250);
   --secondary: white;
   --contrast: black;
 
@@ -64,6 +64,11 @@ p,h1,h2,h3,h4,h5{
 @media (max-width: 800px) {
   header, .container{
     padding: 0 50px;
+  }
+}
+@media (max-width: 500px) {
+  header, .container{
+    padding: 0 10px;
   }
 }
 

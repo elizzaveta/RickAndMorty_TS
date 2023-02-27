@@ -3,6 +3,7 @@ import styles from "../styles/css/components/Header.module.css"
 import {Link} from "react-router-dom";
 import SearchBar from "./SearchBar";
 import ChangeTheme from "./ChangeTheme";
+import Menu from "./Menu";
 
 const Header = () => {
     return (
@@ -16,11 +17,7 @@ const Header = () => {
                 </Link>
                 <ChangeTheme/>
             </div>
-            <div className={styles.flexItems}>
-                <Link to="/episodes" className={`clickableText`}><h4>Episodes</h4></Link>
-                <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
-                <SearchBar/>
-            </div>
+            <Menu/>
         </header>
     );
 };
