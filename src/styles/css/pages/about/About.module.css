@@ -10,12 +10,11 @@
     margin-bottom: 1rem;
 }
 .wrapper *{
-    color: white;
+    color: var(--contrast);
 }
 
 .wrapper{
     background: var(--primary);
     padding-top: 20px ;
     padding-bottom: 20px ;
-    border-bottom: 1px solid black;
 }

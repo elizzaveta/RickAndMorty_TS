@@ -1,5 +1,6 @@
 .wrapper{
     background: var(--primary);
+    color: var(--contrast);
     display: flex;
     flex-direction: column;
     gap: 20px;

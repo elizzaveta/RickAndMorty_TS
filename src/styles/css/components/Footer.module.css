@@ -7,5 +7,5 @@
     align-items: center;
 }
 .footer a{
-    color: white;
+    color: var(--contrast);
 }

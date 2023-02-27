@@ -18,7 +18,7 @@ const About = () => {
             <h2>API</h2>
             <p>Data is taken from public API - <a href="https://rickandmortyapi.com/" target="_blank" rel="noreferrer">The Rick and Morty API</a></p>
             <h2>Source Code</h2>
-            <p>Source code of this page is located on <a href="https://github.com/elizzaveta" target="_blank" rel="noreferrer">GitHub</a></p>
+            <p>Source code of this page is located on <a href="https://github.com/elizzaveta/RickAndMorty_TS" target="_blank" rel="noreferrer">GitHub</a></p>
         </div>
     );
 };
