@@ -1,0 +1,8 @@
+.rowDisplay{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.title{
+    color: var(--orange);
+}
