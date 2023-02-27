@@ -5,23 +5,30 @@ import {episodeType} from "../../consts/apiResponseTypes";
 import {getIdsFromUrls} from "../../functions";
 import Characters from "./Characters";
 import styles from "../../styles/css/pages/episode/Episode.module.css"
+import Loading from "../../components/Loading";
+import NotFound from "../../components/NotFound";
+import {NotFoundEnum} from "../../enums/NotFoundEnum";
 
 const Episode = () => {
     const {id} = useParams();
     const [episode, setEpisode] = useState<episodeType>();
     const [characters, setCharacters] = useState<number[]>()
+    const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
+
     useEffect(() => {
         (async function () {
-            const response = await getEpisodes(String(id));
-            const data = await response.json();
-            setEpisode(await data);
-            setCharacters(getIdsFromUrls(await data.characters));
+            await getEpisodes(String(id))
+                .then(data=>{
+                    setEpisode(data)
+                    setCharacters(getIdsFromUrls(data.characters))
+                })
+                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
         })();
     }, [id])
 
     return (
         <div className={styles.wrapper}>
-            {episode &&
+            {episode ?
                 <div className={`container ${styles.episodeInfoContainer}`}>
                     <div>
                         <h1>{episode.episode} : {episode.name}</h1>
@@ -29,6 +36,7 @@ const Episode = () => {
                     </div>
                     {characters && <Characters charactersIds={characters}/>}
                 </div>
+                : alt
             }
         </div>
     );

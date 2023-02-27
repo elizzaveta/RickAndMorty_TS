@@ -11,9 +11,9 @@ const CharacterEpisodes = (props:{episodes:string[]}) => {
 
     useEffect(() => {
         (async function () {
-            const response = await getEpisodes(JSON.stringify(episodesIds));
-            const data = await response.json();
-            setEpisodesInfo(await data);
+            await getEpisodes(JSON.stringify(episodesIds))
+                .then(data => setEpisodesInfo(data))
+
         })();
     }, [])
 

@@ -8,16 +8,17 @@ import StatusCircle from "../../components/StatusCircle";
 import {ColorEnum} from "../../enums/colorEnum";
 import NotFound from "../../components/NotFound";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import Loading from "../../components/Loading";
 
 const Character = () => {
     const {id} = useParams();
     const [character, setCharacter] = useState<characterProps>();
+    const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
     useEffect(() => {
         (async function () {
             await getCharacter(id)
-                .then(response=>response.json())
                 .then(data => setCharacter(data))
-                .catch(error=>console.log(error));
+                .catch(()=>setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
 
         })();
     }, [id])
@@ -67,7 +68,7 @@ const Character = () => {
                         }
                     </div>
                 </div>
-            :<NotFound type={NotFoundEnum.NO_RESULT}/>
+            : alt
             }
         </>
 

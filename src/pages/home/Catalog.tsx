@@ -8,22 +8,26 @@ import Pagination from "../../components/pagination/Pagination";
 import NotFound from "../../components/NotFound";
 import Hero from "./Hero";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import Loading from "../../components/Loading";
 
 
 const Catalog = () => {
     const [catalog, setCatalog] = useState<catalogProps | null>(null);
     let [searchParams, setSearchParams] = useSearchParams();
+    let [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
         (async function fetchCatalog() {
-            const response = await getCatalog(window.location.search);
-            await response.json()
-                .then((result) => {
+            setCatalog(null);
+            await getCatalog(window.location.search)
+                .then(data => {
                     setCatalog({
-                        info: result.info,
-                        characters: result.results
+                        info: data.info,
+                        characters: data.results
                     })
                 })
+                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
+
 
         })();
 
@@ -49,7 +53,7 @@ const Catalog = () => {
                         <Pagination pages={catalog.info.pages}/>
                     </div>
                 </>
-                : <NotFound type={NotFoundEnum.NO_RESULT}/>
+                : alt
             }
 
         </>

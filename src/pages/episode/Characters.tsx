@@ -10,7 +10,6 @@ const Characters = (props: { charactersIds: number[] }) => {
     useEffect(() => {
         (async function () {
             await getCharacter(JSON.stringify(props.charactersIds))
-                .then(response => response.json())
                 .then(result => setCharacters(result))
                 .catch(error=>console.log(error));
 
