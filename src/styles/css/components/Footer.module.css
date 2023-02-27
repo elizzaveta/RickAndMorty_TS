@@ -1,7 +1,7 @@
 .footer{
-    background: rgb(60 62 68);
+    background: var(--secondary);
     padding: 40px 0;
-    color: white;
+    color: var(--contrast);
     display: flex;
     flex-direction: column;
     align-items: center;

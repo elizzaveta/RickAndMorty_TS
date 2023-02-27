@@ -1,7 +1,8 @@
-.wrapper{
+.wrapper {
     display: flex;
     align-items: center;
 }
-.wrapper img{
-width: 50%;
+
+.wrapper img {
+    width: 50%;
 }

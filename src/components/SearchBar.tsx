@@ -19,15 +19,13 @@ const SearchBar = () => {
             target.value = '';
             target.blur()
             navigation(`/?name=${searchQuery}`)
-
         }
     }
-
-
+    
     return (
         <div className={styles.wrapper}>
             <input id="searchBar" className={styles.input} placeholder="Search..." type="text" onChange={handleChange} onKeyDown={handleKeyDown}/>
-            <img className={styles.searchIcon} src={searchIcon} onClick={()=>{handleSubmit()}}/>
+            <img className={styles.searchIcon} src={searchIcon} onClick={()=>{handleSubmit()}} alt="search icon"/>
         </div>
     );
 };

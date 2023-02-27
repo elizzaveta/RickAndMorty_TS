@@ -1,0 +1,7 @@
+.image{
+    height: 33px;
+    cursor: pointer;
+}
+.image:hover{
+    filter: invert(48%) sepia(100%) saturate(2546%) hue-rotate(20deg) brightness(118%) contrast(119%);
+}

@@ -5,6 +5,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --orange: orange;
+  --green: #0ed80e;
+  --red: red;
+  --gray: lightgray;
+}
+
+.dark-theme{
+  --primary: rgb(39, 43, 51);
+  --secondary: rgb(60 62 68);
+  --contrast: white;
+
+}
+.light-theme{
+  --primary: rgb(232 234 244);
+  --secondary: white;
+  --contrast: black;
+
+}
+.light-theme-svg{
+  filter: invert(0);
+}
+.dark-theme-svg{
+  filter: invert(1);
 }
 
 code {

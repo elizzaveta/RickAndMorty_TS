@@ -4,11 +4,11 @@
     border-radius: 50%;
 }
 .green{
-    background: #0ed80e;
+    background: var(--green);
 }
 .red{
-    background: red;
+    background: var(--red);
 }
 .gray{
-    background: lightgray;
+    background: var(--gray);
 }

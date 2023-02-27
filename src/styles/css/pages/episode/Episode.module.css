@@ -1,6 +1,6 @@
 .wrapper{
-    background: rgb(39, 43, 51);
-    color: white;
+    background: var(--primary);
+    color: var(--contrast);
     padding-top: 20px;
     padding-bottom: 20px;
 }

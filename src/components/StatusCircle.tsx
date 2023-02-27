@@ -2,11 +2,7 @@ import React from 'react';
 import styles from "../styles/css/components/StatusCircle.module.css"
 import {ColorEnum} from "../enums/colorEnum";
 
-type propsType={
-    color: ColorEnum
-}
-
-const StatusCircle = (props: propsType) => {
+const StatusCircle = (props: {color: ColorEnum}) => {
     const {color} = props;
     let colorClassName;
     switch (color) {

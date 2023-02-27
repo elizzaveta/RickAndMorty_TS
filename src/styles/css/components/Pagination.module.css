@@ -1,5 +1,5 @@
 .wrapper{
-    color: white;
+    color: var(--contrast);
     display: flex;
     align-items: center;
     gap: 15px;
@@ -16,6 +16,6 @@
 }
 .currentPage{
     border-radius: 5px;
-    border: 1px solid white;
+    border: 1px solid var(--contrast);
     background: rgba(255, 255, 255, 0.45);
 }
