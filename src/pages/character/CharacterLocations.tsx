@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from "../../styles/css/pages/character/CharacterLocations.module.css";
 import {Link} from "react-router-dom";
+import styles from "../../assets/css/pages/character/CharacterLocations.module.css";
 
 type propType = {
     location:{

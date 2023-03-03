@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from "../../styles/css/components/Pagination.module.css"
 import DisplayPagesPlain from "./pagesDisplayVariants/DisplayPagesPlain";
 import DisplayPagesLeft from "./pagesDisplayVariants/DisplayPagesLeft";
 import DisplayPagesRight from "./pagesDisplayVariants/DisplayPagesRight";
 import DisplayPagesCenter from "./pagesDisplayVariants/DisplayPagesCenter";
+import styles from "../../assets/css/components/pagination/Pagination.module.css"
 
 const PaginationPagesDisplay = (props: { page: number, total: number | undefined}) => {
     const {page, total} = props;

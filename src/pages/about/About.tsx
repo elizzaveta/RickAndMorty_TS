@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../../styles/css/pages/about/About.module.css"
+import styles from "../../assets/css/pages/about/About.module.css"
 
 const About = () => {
     return (
@@ -12,6 +12,7 @@ const About = () => {
                 <li>Characters & Episodes & Locations Catalog</li>
                 <li>Pagination</li>
                 <li>Search Bar</li>
+                <li>Quiz</li>
                 <li>Dark & Light UI Themes</li>
             </ul>
             <h2>Technologies</h2>

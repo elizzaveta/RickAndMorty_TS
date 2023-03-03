@@ -1,12 +1,12 @@
 import React from 'react';
-import {characterProps} from "../../consts/apiResponseTypes";
-import styles from "../../styles/css/pages/home/CharacterCard.module.css"
-import StatusCircle from "../../components/StatusCircle";
-import {ColorEnum} from "../../enums/colorEnum";
 import {Link} from "react-router-dom";
+import {characterType} from "../../types/apiResponseTypes";
+import {ColorEnum} from "../../enums/colorEnum";
+import StatusCircle from "../../components/StatusCircle";
+import styles from "../../assets/css/pages/home/CharacterCard.module.css"
 
 type propsType = {
-    character: characterProps
+    character: characterType
 }
 
 const CharacterCard = (props: propsType) => {

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getEpisodes} from "../../api/GET";
-import {episodeType} from "../../consts/apiResponseTypes";
-import {getIdsFromUrls} from "../../functions";
+import {getEpisode} from "../../api/GET";
+import {episodeType} from "../../types/apiResponseTypes";
+import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import {getIdsFromUrls} from "../../utils/functions";
 import Characters from "./Characters";
-import styles from "../../styles/css/pages/episode/Episode.module.css"
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import styles from "../../assets/css/pages/episode/Episode.module.css"
 
 const Episode = () => {
     const {id} = useParams();
@@ -17,7 +17,7 @@ const Episode = () => {
 
     useEffect(() => {
         (async function () {
-            await getEpisodes(String(id))
+            await getEpisode(String(id))
                 .then(data=>{
                     setEpisode(data)
                     setCharacters(getIdsFromUrls(data.characters))

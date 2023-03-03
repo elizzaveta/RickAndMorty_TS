@@ -1,4 +1,4 @@
-import {apiBaseURL, apiEndpoints} from "../consts/apiURLs";
+import {apiBaseURL, apiEndpoints} from "./ApiEndpoints";
 
 const GET = (url:string)=>{
     return fetch(url)
@@ -10,23 +10,33 @@ const GET = (url:string)=>{
         });
 }
 
-
+//get characters catalog
 export const getCatalog = (page: string | null) => {
     return GET(apiBaseURL + apiEndpoints.characters + "/" + page);
 }
+
+//get episodes catalog
+export const getEpisodes = (query: string) => {
+    return GET(apiBaseURL + apiEndpoints.episodes + '?' + query);
+}
+
+//get locations catalog
+export const getLocations = (query: string) => {
+    return GET(apiBaseURL + apiEndpoints.locations + '?' + query);
+}
+
+//get characters by ids
 export const getCharacter = (id: string | undefined) => {
 
     return GET(apiBaseURL + apiEndpoints.characters + "/" + id)
 }
-export const getEpisodes = (query: string) => {
-    return GET(apiBaseURL + apiEndpoints.episodes + "/" + query);
-}
-export const getEpisodesCatalog = (query: string) => {
-    return GET(apiBaseURL + apiEndpoints.episodes + '?' + query);
-}
+
+//get location by id
 export const getLocation = (id: string|undefined) => {
     return GET(apiBaseURL + apiEndpoints.locations + '/' + id);
 }
-export const getLocationsCatalog = (query: string) => {
-    return GET(apiBaseURL + apiEndpoints.locations + '?' + query);
+
+//get episodes by ids
+export const getEpisode = (query: string) => {
+    return GET(apiBaseURL + apiEndpoints.episodes + "/" + query);
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 import {useNavigate, useSearchParams} from "react-router-dom";
-import styles from "../../styles/css/components/Pagination.module.css"
+import {ArrowIcon} from "../../consts/ArrowIcons";
 import PaginationPagesDisplay from "./PaginationPagesDisplay";
 import Arrow from "../Arrow";
-import {ArrowIcon} from "../../consts/ArrowIcons";
+import styles from "../../assets/css/components/pagination/Pagination.module.css"
 
 const Pagination = (props: {pages: number | undefined}) => {
     const {pages} = props;
-    let [searchParams, setSearchParams] = useSearchParams();
+    let [searchParams] = useSearchParams();
     const page = parseInt(searchParams.get("page") || "1");
     const navigate = useNavigate();
 

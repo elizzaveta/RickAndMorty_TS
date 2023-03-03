@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {getCatalog} from "../../api/GET";
-import CharacterCard from "./CharacterCard";
-import {catalogProps} from "../../consts/apiResponseTypes";
-import styles from "../../styles/css/pages/home/Catalog.module.css"
 import {useSearchParams} from "react-router-dom";
+import {getCatalog} from "../../api/GET";
+import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import {characterCatalogType} from "../../types/apiResponseTypes";
+import Hero from "./Hero";
+import CharacterCard from "./CharacterCard";
 import Pagination from "../../components/pagination/Pagination";
 import NotFound from "../../components/NotFound";
-import Hero from "./Hero";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import Loading from "../../components/Loading";
+import styles from "../../assets/css/pages/home/Catalog.module.css"
 
 
 const Catalog = () => {
-    const [catalog, setCatalog] = useState<catalogProps | null>(null);
-    let [searchParams, setSearchParams] = useSearchParams();
+    const [catalog, setCatalog] = useState<characterCatalogType | null>(null);
+    let [searchParams] = useSearchParams();
     let [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {

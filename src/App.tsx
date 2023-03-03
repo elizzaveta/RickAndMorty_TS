@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.css';
 import Header from "./components/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import appRouter from "./consts/appRouter";
+import appRouter from "./routes/appRouter";
 import Footer from "./components/Footer";
 
 function App() {

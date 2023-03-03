@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from "../../styles/css/pages/character/CharacterMainInfo.module.css";
-import StatusCircle from "../../components/StatusCircle";
 import {ColorEnum} from "../../enums/colorEnum";
-import {characterProps} from "../../consts/apiResponseTypes";
+import {characterType} from "../../types/apiResponseTypes";
+import StatusCircle from "../../components/StatusCircle";
+import styles from "../../assets/css/pages/character/CharacterMainInfo.module.css";
 
-const CharacterMainInfo = (props:{character: characterProps}) => {
+const CharacterMainInfo = (props:{character: characterType}) => {
     const {character} = props;
     const renderStatusCircle = (status: string) => {
         switch (status) {

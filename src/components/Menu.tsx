@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import menuIcon from "../images/menu.svg"
-import styles from "../styles/css/components/Menu.module.css";
 import {Link, useSearchParams} from "react-router-dom";
+import menuIcon from "../assets/images/menu.svg"
 import SearchBar from "./SearchBar";
+import styles from "../assets/css/components/Menu.module.css";
 
 const Menu = () => {
-    const [showIcon, setShowIcon] = useState<boolean>(window.innerWidth < 700);
+    const [showIcon, setShowIcon] = useState<boolean>(window.innerWidth < 900);
     const [toggleMenu, setToggleMenu] = useState<boolean>(true);
     const [location] = useSearchParams()
 
     window.addEventListener("resize", () => {
-        if (window.innerWidth < 850) {
+        if (window.innerWidth < 900) {
             setShowIcon(true);
         }
         else {
@@ -18,7 +18,7 @@ const Menu = () => {
             setToggleMenu(true)
         }
     })
-    
+
     useEffect(()=>{
         setToggleMenu(true)
     }, [location])

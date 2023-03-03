@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {getEpisode} from "../../api/GET";
+import {episodeType} from "../../types/apiResponseTypes";
+import {getIdsFromUrls} from "../../utils/functions";
 import Episode from "./Episode";
-import {getEpisodes} from "../../api/GET";
-import {episodeType} from "../../consts/apiResponseTypes";
-import {getIdsFromUrls} from "../../functions";
-import styles from "../../styles/css/pages/character/CharacterEpisodes.module.css"
+import styles from "../../assets/css/pages/character/CharacterEpisodes.module.css"
 
 const CharacterEpisodes = (props:{episodes:string[]}) => {
     const {episodes} = props;
@@ -12,7 +12,7 @@ const CharacterEpisodes = (props:{episodes:string[]}) => {
 
     useEffect(() => {
         (async function () {
-            await getEpisodes(JSON.stringify(episodesIds))
+            await getEpisode(JSON.stringify(episodesIds))
                 .then(data => setEpisodesInfo(data))
 
         })();

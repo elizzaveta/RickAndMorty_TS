@@ -1,13 +1,13 @@
 import React from 'react';
-import rick404 from "../images/404 Rick.png"
 import {NotFoundEnum} from "../enums/NotFoundEnum"
-import styles from "../styles/css/components/NotFound.module.css"
+import rick404 from "../assets/images/404 Rick.png"
+import styles from "../assets/css/components/NotFound.module.css"
 
 
 const NotFound = (props: { type?:string}) => {
     return (
         <div className={`container ${styles.wrapper}`}>
-            <img src={rick404}/>
+            <img src={rick404} alt="404"/>
             <div>
                 <h1>Not Found</h1>
                 {props.type

@@ -1,7 +1,7 @@
 import React from 'react';
-import {episodeType} from "../../consts/apiResponseTypes";
 import {Link} from "react-router-dom";
-import styles from "../../styles/css/pages/character/Episodes.module.css"
+import {episodeType} from "../../types/apiResponseTypes";
+import styles from "../../assets/css/pages/character/Episodes.module.css"
 
 
 

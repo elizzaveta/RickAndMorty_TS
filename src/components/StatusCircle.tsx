@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from "../styles/css/components/StatusCircle.module.css"
 import {ColorEnum} from "../enums/colorEnum";
+import styles from "../assets/css/components/StatusCircle.module.css"
 
 const StatusCircle = (props: {color: ColorEnum}) => {
     const {color} = props;

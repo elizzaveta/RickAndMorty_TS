@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {getCharacter} from "../../api/GET";
-import {characterProps} from "../../consts/apiResponseTypes";
-import styles from "../../styles/css/pages/episode/Characters.module.css"
 import {Link} from "react-router-dom";
+import {getCharacter} from "../../api/GET";
+import {characterType} from "../../types/apiResponseTypes";
+import styles from "../../assets/css/pages/episode/Characters.module.css"
 
 const Characters = (props: { charactersIds: number[] }) => {
-    const [characters, setCharacters] = useState<characterProps[]>();
+    const [characters, setCharacters] = useState<characterType[]>();
 
     useEffect(() => {
         (async function () {

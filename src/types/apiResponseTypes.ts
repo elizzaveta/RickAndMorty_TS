@@ -1,23 +1,27 @@
-
-export type catalogProps = {
-    info: infoProps
-    characters: characterProps[]
+//catalogs
+export type characterCatalogType = {
+    info: infoType
+    characters: characterType[]
 }
-export type episodesProps = {
-    info: infoProps
+export type episodeCatalogType = {
+    info: infoType
     episodes: episodeType[]
 }
-export type locationsProps = {
-    info: infoProps
+export type locationCatalogType = {
+    info: infoType
     locations: locationType[]
 }
-export type infoProps = {
+
+// info
+export type infoType = {
     count: number
     next: string
     pages: number
     prev: null | string
 };
-export type characterProps = {
+
+// catalog content
+export type characterType = {
     created: string
     episode: string[]
     gender: string

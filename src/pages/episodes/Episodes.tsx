@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {episodesProps} from "../../consts/apiResponseTypes";
 import {Link, useSearchParams} from "react-router-dom";
-import {getEpisodesCatalog} from "../../api/GET";
-import styles from "../../styles/css/pages/episodes/Episodes.module.css";
-import Pagination from "../../components/pagination/Pagination";
+import {episodeCatalogType} from "../../types/apiResponseTypes";
+import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import {getEpisodes} from "../../api/GET";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
+import Pagination from "../../components/pagination/Pagination";
+import styles from "../../assets/css/pages/episodes/Episodes.module.css";
 
 const Episodes = () => {
-    const [episodes, setEpisodes] = useState<episodesProps>();
+    const [episodes, setEpisodes] = useState<episodeCatalogType>();
     let [searchParams] = useSearchParams();
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
         (async function fetchCatalog() {
-            await getEpisodesCatalog(searchParams.toString())
+            await getEpisodes(searchParams.toString())
                 .then(data => {
                     setEpisodes({
                         info: data.info,

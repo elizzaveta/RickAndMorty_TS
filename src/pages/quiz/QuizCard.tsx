@@ -1,8 +1,18 @@
 import React from 'react';
-import {quizQuestionType} from "../../consts/QuizQuestions";
-import styles from "../../styles/css/pages/quiz/Quiz.module.css"
+import {quizQuestionType} from "../../types/quizTypes";
+import styles from "../../assets/css/pages/quiz/Quiz.module.css"
 
-const QuizCard = (props:{question: quizQuestionType, callback(e: React.MouseEvent):void, answerStyles:{correct: string, unselected: string}}) => {
+type propsType = {
+    question: quizQuestionType,
+    callback(e: React.MouseEvent): void,
+    answerStyles: {
+        correct: string,
+        unselected: string
+    }
+}
+
+
+const QuizCard = (props: propsType) => {
     const {question} = props;
 
     return (
@@ -12,7 +22,7 @@ const QuizCard = (props:{question: quizQuestionType, callback(e: React.MouseEven
                 return (
                     <div className={styles.answerVariant} key={answer.id}>
                         <p onClick={props.callback}
-                           className={answer.correct ? props.answerStyles.correct:''}
+                           className={answer.correct ? props.answerStyles.correct : ''}
                            id={answer.id.toString()}>{answer.text}</p>
                     </div>
                 )

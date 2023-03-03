@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {locationType} from "../../consts/apiResponseTypes";
-import Loading from "../../components/Loading";
 import {getLocation} from "../../api/GET";
-import NotFound from "../../components/NotFound";
+import {locationType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
-import styles from "../../styles/css/pages/location/Location.module.css"
+import {getIdsFromUrls} from "../../utils/functions";
+import Loading from "../../components/Loading";
+import NotFound from "../../components/NotFound";
 import Characters from "../episode/Characters";
-import {getIdsFromUrls} from "../../functions";
+import styles from "../../assets/css/pages/location/Location.module.css"
 
 const Location = () => {
     const {id} = useParams()

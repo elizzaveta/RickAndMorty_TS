@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useSearchParams} from "react-router-dom";
-import styles from "../../../styles/css/components/Pagination.module.css";
+import styles from "../../../assets/css/components/pagination/Pagination.module.css";
 
 
 const DisplayPages = (props: {left: number[], right?: number[], center?: number[]}) => {
     let navigate = useNavigate();
-    let [searchParams, setSearchParams] = useSearchParams();
+    let [searchParams] = useSearchParams();
     const page = parseInt(searchParams.get("page")||"1");
     const [currentPage, setCurrentPage] = useState(page)
 

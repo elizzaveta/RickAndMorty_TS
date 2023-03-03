@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from "../styles/css/components/Header.module.css"
 import {Link} from "react-router-dom";
-import SearchBar from "./SearchBar";
 import ChangeTheme from "./ChangeTheme";
 import Menu from "./Menu";
+import styles from "../assets/css/components/Header.module.css"
 
 const Header = () => {
     return (
         <header className={styles.header}>
-            <div className={styles.flexItems}>
+            <div className={styles.leftNav}>
                 <Link to="/" className={`clickableText`}>
                     <div>
                         <h3>Rick & Morty</h3>

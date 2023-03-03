@@ -1,15 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {getNextQuestion, QuizQuestions, quizQuestionType} from "../../consts/QuizQuestions";
-import styles from "../../styles/css/pages/quiz/Quiz.module.css"
+import {getNextQuestion, QuizQuestions} from "../../consts/QuizQuestions";
+import {quizProgressEnum} from "../../enums/quizProgressEnum";
+import {quizQuestionType} from "../../types/quizTypes";
 import QuizCard from "./QuizCard";
 import QuizResults from "./QuizResults";
-
-enum quizProgressEnum {
-    NOT_STARTED = "Start",
-    IN_PROGRESS = "Next Question",
-    DONE = "See Results",
-    TRY_AGAIN = "Try Again"
-}
+import styles from "../../assets/css/pages/quiz/Quiz.module.css"
 
 const Quiz = () => {
     const [quizProgress, setQuizProgress] = useState<quizProgressEnum>(quizProgressEnum.NOT_STARTED)
@@ -36,15 +31,13 @@ const Quiz = () => {
         }
     }
 
-    useEffect(()=>{
-        if(currentQuestion && QuizQuestions.questions.indexOf(currentQuestion)===QuizQuestions.questions.length-1)setQuizProgress(quizProgressEnum.DONE);
+    useEffect(() => {
+        if (currentQuestion && QuizQuestions.indexOf(currentQuestion) === QuizQuestions.length - 1)
+            setQuizProgress(quizProgressEnum.DONE);
 
     }, [currentQuestion])
 
-    const showResults = () => {
-        setQuizProgress(quizProgressEnum.TRY_AGAIN)
-    }
-    const resetQuiz = ()=>{
+    const resetQuiz = () => {
         setQuizProgress(quizProgressEnum.NOT_STARTED);
         setScore(0);
         setNextQuestionGenerator(getNextQuestion());
@@ -58,23 +51,24 @@ const Quiz = () => {
                 nextQuestion();
                 break;
             case quizProgressEnum.DONE:
-                showResults(); break;
+                setQuizProgress(quizProgressEnum.TRY_AGAIN);
+                break;
             case quizProgressEnum.TRY_AGAIN:
-                resetQuiz()
+                resetQuiz();
         }
     }
     const handleUserAnswer = (e: React.MouseEvent) => {
         if (!currentQuestion || userAnswer.answered) return;
         setUserAnswer({selected: e.currentTarget.id, answered: true})
+        setAnswerStyles({correct: styles.correct, unselected: ''})
 
         const answerIsCorrect = currentQuestion.answerVariants
             .find((answer) => answer.id.toString() === e.currentTarget.id)?.correct;
 
         if (answerIsCorrect) setScore(score + 1)
-
-        setAnswerStyles({correct: styles.correct, unselected: ''})
-        if (!answerIsCorrect) e.currentTarget.className = styles.wrong
+        else e.currentTarget.className = styles.wrong
     }
+
     return (
         <div className={`container ${styles.wrapper}`}>
             <h1 className={`orangeText ${styles.centerText}`}>Rick And Morty Quiz</h1>
@@ -85,11 +79,11 @@ const Quiz = () => {
                     {quizProgress !== quizProgressEnum.TRY_AGAIN ?
                         <>
                             <p><b>Score:</b> {score}</p>
-                            <p>{currentQuestion.id}/{QuizQuestions.questions.length}</p>
+                            <p>{currentQuestion.id}/{QuizQuestions.length}</p>
                             <QuizCard question={currentQuestion} callback={handleUserAnswer}
                                       answerStyles={answerStyles}/>
                         </>
-                        :<QuizResults score={score} totalQuestions={QuizQuestions.questions.length}/>
+                        : <QuizResults score={score} totalQuestions={QuizQuestions.length}/>
                     }
                 </>
             }

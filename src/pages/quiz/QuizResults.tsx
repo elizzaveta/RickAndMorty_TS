@@ -1,13 +1,13 @@
 import React from 'react';
-import rick from "../../images/rick congrats.png"
-import jerry from "../../images/jerry.png"
-import styles from "../../styles/css/pages/quiz/QuizResults.module.css"
+import rick from "../../assets/images/rick congrats.png"
+import jerry from "../../assets/images/jerry.png"
+import styles from "../../assets/css/pages/quiz/QuizResults.module.css"
 
 const QuizResults = (props: { score: number, totalQuestions: number }) => {
     let enoughPoints: boolean = props.score >= props.totalQuestions / 2;
     let result
     enoughPoints
-    ? result =  {
+        ? result = {
             image: rick,
             text1: `Congrats! Your score is ${props.score} out of ${props.totalQuestions}.`,
             text2: 'You\'re not Jerry.'

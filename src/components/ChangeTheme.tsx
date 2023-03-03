@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import themeIcon from "../images/theme.svg"
-import styles from "../styles/css/components/ChangeTheme.module.css"
 import {ThemeClassNames} from "../consts/ThemeClassNames";
+import themeIcon from "../assets/images/theme.svg"
+import styles from "../assets/css/components/ChangeTheme.module.css"
 
 const ChangeTheme = () => {
     const [theme, setTheme] = useState<string>(getTheme())

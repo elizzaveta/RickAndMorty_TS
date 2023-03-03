@@ -3,7 +3,7 @@ import {useSearchParams} from "react-router-dom";
 import DisplayPages from "./DisplayPages";
 
 const DisplayPagesCenter = (props: {total: number }) => {
-    let [searchParams, setSearchParams] = useSearchParams();
+    let [searchParams] = useSearchParams();
     const page: number = parseInt(searchParams.get("page") || '1')
 
 

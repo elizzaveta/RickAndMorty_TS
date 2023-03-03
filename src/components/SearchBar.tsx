@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import styles from "../styles/css/components/SearchBar.module.css"
-import searchIcon from "../images/search.png"
+import searchIcon from "../assets/images/search.png"
+import styles from "../assets/css/components/SearchBar.module.css"
 
 const SearchBar = () => {
     const [searchQuery, setSearchQuery] = useState<string>();
