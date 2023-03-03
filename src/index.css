@@ -8,7 +8,7 @@ body {
   --orange: orange;
   --green: #0ed80e;
   --red: red;
-  --gray: lightgray;
+  --gray: rgba(211, 211, 211, 0.46);
 }
 
 .dark-theme{

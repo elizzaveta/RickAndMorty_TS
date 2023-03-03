@@ -6,6 +6,7 @@ import Episodes from "../pages/episodes/Episodes";
 import NotFound from "../components/NotFound";
 import Location from "../pages/location/Location";
 import Locations from "../pages/locations/Locations";
+import Quiz from "../pages/quiz/Quiz";
 
 const appRouter = [
     {
@@ -54,7 +55,12 @@ const appRouter = [
       component: Locations
     },
     {
-        id:10,
+      id:10,
+      path: '/quiz',
+      component: Quiz
+    },
+    {
+        id:11,
         path: "*",
         component: NotFound
     }

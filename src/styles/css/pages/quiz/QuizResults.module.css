@@ -1,0 +1,14 @@
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+    height: 50vh;
+    margin-top: 20px;
+}
+.image{
+    height: 90%;
+}
+.textWrapper{
+    width: 50%;
+    padding-top: 10%;
+
+}

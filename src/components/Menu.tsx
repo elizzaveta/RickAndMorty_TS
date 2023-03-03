@@ -34,6 +34,7 @@ const Menu = () => {
                 :<div className={styles.flexItems}>
                     <Link to="/episodes" className={`clickableText`}><h4>Episodes</h4></Link>
                     <Link to="/locations" className={`clickableText`}><h4>Locations</h4></Link>
+                    <Link to="/quiz" className={`clickableText`}><h4>Quiz</h4></Link>
                     <Link to="/about" className={`clickableText`}><h4>About</h4></Link>
                     <SearchBar/>
                 </div>
@@ -41,6 +42,7 @@ const Menu = () => {
             <div id="menu" className={`container ${styles.menu} ${toggleMenu? styles.toggle:''}`}>
                 <Link to="/episodes" className={`clickableText`} onClick={handleMenuClick}><h4>Episodes</h4></Link>
                 <Link to="/locations" className={`clickableText`} onClick={handleMenuClick}><h4>Locations</h4></Link>
+                <Link to="/quiz" className={`clickableText`} onClick={handleMenuClick}><h4>Quiz</h4></Link>
                 <Link to="/about" className={`clickableText`} onClick={handleMenuClick}><h4>About</h4></Link>
                 <SearchBar/>
             </div>
