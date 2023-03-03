@@ -7,6 +7,7 @@ Library of "Rick and Morty" tw show characters
 * Characters & Episodes & Locations Catalog
 * Pagination
 * Search Bar
+* Quiz
 * Dark & Light UI Themes
 
 ## Technologies
