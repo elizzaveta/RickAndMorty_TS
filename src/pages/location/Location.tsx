@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {locationType} from "../../types/apiResponseTypes";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import {getIdsFromUrls} from "../../utils/functions";
-import Loading from "../../components/Loading";
-import NotFound from "../../components/NotFound";
 import Characters from "../episode/Characters";
 import styles from "../../assets/css/pages/location/Location.module.css"
 import {fetchLocations} from "../../api/locations/fetchLocations";
+import {ErrorType} from "../../types/errorType";
 
 const Location = () => {
     const {id} = useParams()
     const [location, setLocation] = useState<locationType | null>(null);
-    const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
     const [residentsIds, setResidentsIds] = useState<number[]>([])
+    const [error, setError] = useState<ErrorType>({isError: false});
+
+    if(error.isError) throw new Error(error.message);
 
     useEffect(() => {
         fetchLocations(id)
@@ -21,14 +21,14 @@ const Location = () => {
                 setLocation(data);
                 setResidentsIds(getIdsFromUrls(data.residents));
             })
-            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>))
+            .catch((e) => setError({isError: true, message: e}));
     }, [id])
 
     return (
         <div className={styles.wrapper}>
             <div className={`container`}>
-                {location
-                    ? <>
+                {location &&
+                    <>
                         <h1 className={styles.title}>{location.name}</h1>
                         <p><b>Type: </b>{location.type}</p>
                         <p><b>Dimension: </b>{location.dimension}</p>
@@ -38,7 +38,6 @@ const Location = () => {
                             : <p>No residents</p>
                         }
                     </>
-                    : alt
                 }
             </div>
         </div>

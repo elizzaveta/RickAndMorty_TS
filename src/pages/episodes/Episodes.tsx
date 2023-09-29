@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useSearchParams} from "react-router-dom";
 import {episodeCatalogType} from "../../types/apiResponseTypes";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
-import Loading from "../../components/Loading";
-import NotFound from "../../components/NotFound";
 import Pagination from "../../components/pagination/Pagination";
 import styles from "../../assets/css/pages/episodes/Episodes.module.css";
 import {fetchEpisodes} from "../../api/episodes/fetchEpisodes";
+import {ErrorType} from "../../types/errorType";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState<episodeCatalogType>();
-    let [searchParams] = useSearchParams();
-    const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
+    const [searchParams] = useSearchParams();
+    const [error, setError] = useState<ErrorType>({isError: false})
+
+    if(error.isError) throw new Error(error.message);
 
     useEffect(() => {
         fetchEpisodes(searchParams.toString())
@@ -21,7 +21,7 @@ const Episodes = () => {
                     episodes: data.results
                 })
             })
-            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
+            .catch((e) => setError({isError: true, message: e}));
     }, [searchParams])
 
     return (
@@ -29,8 +29,8 @@ const Episodes = () => {
             <div id="topView"></div>
             <div className={`container`}>
                 <h1 className={`orangeText`}>Rick And Morty Episodes</h1>
-                {episodes
-                    ? episodes.episodes.map((episode) => {
+                {episodes &&
+                    episodes.episodes.map((episode) => {
                         return (
                             <>
                                 {episode.episode.includes("E01")
@@ -41,8 +41,7 @@ const Episodes = () => {
                                           className={`clickableText`}>{episode.episode}: {episode.name}</Link></h2>
                             </>
                         )
-                    })
-                    : alt}
+                    })}
             </div>
 
             <Pagination pages={episodes?.info.pages}/>

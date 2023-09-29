@@ -8,9 +8,7 @@ import styles from "../../assets/css/pages/home/CharacterCard.module.css"
 type propsType = {
     character: characterType
 }
-
-const CharacterCard = (props: propsType) => {
-    const {character} = props;
+const CharacterCard = ({character} : propsType) => {
     const renderStatusCircle = (status: string) => {
         switch (status) {
             case "Alive":

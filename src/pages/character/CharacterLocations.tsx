@@ -13,7 +13,6 @@ type propType = {
     }
 }
 
-
 const CharacterLocations = (props: propType) => {
     const locationId = props.location.url.substring(props.location.url.lastIndexOf('/')+1, props.location.url.length);
     const originId = props.location.url.substring(props.origin.url.lastIndexOf('/')+1, props.origin.url.length);

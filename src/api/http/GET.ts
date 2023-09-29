@@ -1,10 +1,12 @@
-export const GET = (url:string)=>{
+export const GET = (url: string) => {
     return fetch(url)
-        .then(response=> {
+        .then(response => {
             if (response.ok) {
                 return response.json();
             }
-            throw new Error('Something went wrong');
+            return response.text().then(text => {
+                throw new Error(`${response.status}: ${JSON.parse(text).error}`)
+            })
         });
 }
 

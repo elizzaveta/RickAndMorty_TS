@@ -1,23 +1,21 @@
 import React from 'react';
 import Header from "./components/Header";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import appRouter from "./routes/appRouter";
+import {BrowserRouter} from "react-router-dom";
 import Footer from "./components/Footer";
+import MainContent from "./MainContent";
+
 
 function App() {
-  return (
-    <div className="App">
-        <BrowserRouter>
-            <Header/>
-            <Routes>
-                {appRouter.map((route)=>
-                    <Route path={route.path} key={route.id} element={<route.component/>}/>
-                )}
-            </Routes>
-            <Footer/>
-        </BrowserRouter>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Header/>
+                <MainContent/>
+                <Footer/>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;

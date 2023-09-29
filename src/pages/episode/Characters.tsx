@@ -18,7 +18,7 @@ const Characters = (props: { charactersIds: number[] }) => {
             <div className={styles.charactersGrid}>
                 {characters && characters?.map((character) => {
                     return (
-                        <Link to={`/character/${character.id}`} className={`clickableText ${styles.link}`}>
+                        <Link to={`/character/${character.id}`} className={`clickableText ${styles.link}`} key={character.id}>
                             <div key={character.id} className={styles.characterContainer}>
                                 <img className={styles.image} src={character.image} alt={character.name}/>
                                 <p>{character.name}</p>

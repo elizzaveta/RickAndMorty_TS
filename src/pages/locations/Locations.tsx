@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useSearchParams} from "react-router-dom";
 import {locationCatalogType} from "../../types/apiResponseTypes";
-import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import Pagination from "../../components/pagination/Pagination";
-import Loading from "../../components/Loading";
-import NotFound from "../../components/NotFound";
 import styles from "../../assets/css/pages/episodes/Episodes.module.css";
 import {fetchLocations} from "../../api/locations/fetchLocations";
+import {ErrorType} from "../../types/errorType";
 
 const Episodes = () => {
     const [locations, setLocations] = useState<locationCatalogType>();
-    let [searchParams] = useSearchParams();
-    const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
+    const [searchParams] = useSearchParams();
+    const [error, setError] = useState<ErrorType>({isError: false});
+
+    if (error.isError) throw new Error(error.message);
 
     useEffect(() => {
         fetchLocations(searchParams.toString())
@@ -21,15 +21,15 @@ const Episodes = () => {
                     locations: data.results
                 })
             })
-            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
+            .catch((e) => setError({isError: true, message: e}));
     }, [searchParams])
     return (
         <div className={styles.wrapper}>
             <div id="topView"></div>
             <div className={`container`}>
                 <h1 className={`orangeText`}>Locations</h1>
-                {locations
-                    ? locations.locations.map((location) => {
+                {locations &&
+                    locations.locations.map((location) => {
                         return (
                             <h2>
                                 <Link to={`/locations/${location.id}`} className={`clickableText`}>
@@ -38,7 +38,7 @@ const Episodes = () => {
                             </h2>
                         )
                     })
-                    : alt}
+                }
             </div>
 
             <Pagination pages={locations?.info.pages}/>
