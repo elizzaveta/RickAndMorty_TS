@@ -6,7 +6,7 @@ import Pagination from "../../components/pagination/Pagination";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import styles from "../../assets/css/pages/episodes/Episodes.module.css";
-import {fetchLocation} from "../../api/locations/fetchLocation";
+import {fetchLocations} from "../../api/locations/fetchLocations";
 
 const Episodes = () => {
     const [locations, setLocations] = useState<locationCatalogType>();
@@ -14,7 +14,7 @@ const Episodes = () => {
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        fetchLocation(searchParams.toString())
+        fetchLocations(searchParams.toString())
             .then(data => {
                 setLocations({
                     info: data.info,

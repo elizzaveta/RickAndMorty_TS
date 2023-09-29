@@ -7,7 +7,7 @@ import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import Characters from "../episode/Characters";
 import styles from "../../assets/css/pages/location/Location.module.css"
-import {fetchLocation} from "../../api/locations/fetchLocation";
+import {fetchLocations} from "../../api/locations/fetchLocations";
 
 const Location = () => {
     const {id} = useParams()
@@ -16,7 +16,7 @@ const Location = () => {
     const [residentsIds, setResidentsIds] = useState<number[]>([])
 
     useEffect(() => {
-        fetchLocation(id)
+        fetchLocations(id)
             .then(data => {
                 setLocation(data);
                 setResidentsIds(getIdsFromUrls(data.residents));
