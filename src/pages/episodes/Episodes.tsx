@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Link, useSearchParams} from "react-router-dom";
 import {episodeCatalogType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
-import {getEpisodes} from "../../api/GET";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import Pagination from "../../components/pagination/Pagination";
 import styles from "../../assets/css/pages/episodes/Episodes.module.css";
+import {fetchEpisodes} from "../../api/episodes/fetchEpisodes";
 
 const Episodes = () => {
     const [episodes, setEpisodes] = useState<episodeCatalogType>();
@@ -14,18 +14,16 @@ const Episodes = () => {
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        (async function fetchCatalog() {
-            await getEpisodes(searchParams.toString())
-                .then(data => {
-                    setEpisodes({
-                        info: data.info,
-                        episodes: data.results
-                    })
+        fetchEpisodes(searchParams.toString())
+            .then(data => {
+                setEpisodes({
+                    info: data.info,
+                    episodes: data.results
                 })
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
-        })();
-
+            })
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
     }, [searchParams])
+
     return (
         <div className={styles.wrapper}>
             <div id="topView"></div>

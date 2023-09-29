@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useSearchParams} from "react-router-dom";
-import {getLocations} from "../../api/GET";
 import {locationCatalogType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import Pagination from "../../components/pagination/Pagination";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import styles from "../../assets/css/pages/episodes/Episodes.module.css";
+import {fetchLocation} from "../../api/locations/fetchLocation";
 
 const Episodes = () => {
     const [locations, setLocations] = useState<locationCatalogType>();
@@ -14,17 +14,14 @@ const Episodes = () => {
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        (async function fetchCatalog() {
-            await getLocations(searchParams.toString())
-                .then(data => {
-                    setLocations({
-                        info: data.info,
-                        locations: data.results
-                    })
+        fetchLocation(searchParams.toString())
+            .then(data => {
+                setLocations({
+                    info: data.info,
+                    locations: data.results
                 })
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
-        })();
-
+            })
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
     }, [searchParams])
     return (
         <div className={styles.wrapper}>

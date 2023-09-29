@@ -1,19 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
-import {getCharacter} from "../../api/GET";
 import {characterType} from "../../types/apiResponseTypes";
 import styles from "../../assets/css/pages/episode/Characters.module.css"
+import {fetchCharacter} from "../../api/characters/fetchCharacter";
 
 const Characters = (props: { charactersIds: number[] }) => {
     const [characters, setCharacters] = useState<characterType[]>();
 
     useEffect(() => {
-        (async function () {
-            await getCharacter(JSON.stringify(props.charactersIds))
-                .then(result => setCharacters(result))
-                .catch(error=>console.log(error));
-
-        })();
+        fetchCharacter(JSON.stringify(props.charactersIds))
+            .then(result => setCharacters(result))
+            .catch(error=>console.log(error));
     }, [])
 
     return (
@@ -23,7 +20,7 @@ const Characters = (props: { charactersIds: number[] }) => {
                     return (
                         <Link to={`/character/${character.id}`} className={`clickableText ${styles.link}`}>
                             <div key={character.id} className={styles.characterContainer}>
-                                <img className={styles.image} src={character.image}/>
+                                <img className={styles.image} src={character.image} alt={character.name}/>
                                 <p>{character.name}</p>
                             </div>
                         </Link>

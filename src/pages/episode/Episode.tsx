@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getEpisode} from "../../api/GET";
 import {episodeType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import {getIdsFromUrls} from "../../utils/functions";
@@ -8,6 +7,7 @@ import Characters from "./Characters";
 import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import styles from "../../assets/css/pages/episode/Episode.module.css"
+import {fetchEpisodes} from "../../api/episodes/fetchEpisodes";
 
 const Episode = () => {
     const {id} = useParams();
@@ -16,14 +16,12 @@ const Episode = () => {
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        (async function () {
-            await getEpisode(String(id))
-                .then(data=>{
-                    setEpisode(data)
-                    setCharacters(getIdsFromUrls(data.characters))
-                })
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
-        })();
+        fetchEpisodes(String(id))
+            .then(data=>{
+                setEpisode(data)
+                setCharacters(getIdsFromUrls(data.characters))
+            })
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
     }, [id])
 
     return (

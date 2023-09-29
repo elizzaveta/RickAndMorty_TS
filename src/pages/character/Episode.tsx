@@ -3,8 +3,6 @@ import {Link} from "react-router-dom";
 import {episodeType} from "../../types/apiResponseTypes";
 import styles from "../../assets/css/pages/character/Episodes.module.css"
 
-
-
 const Episode = (props: {episode: episodeType}) => {
     const {episode} = props;
 

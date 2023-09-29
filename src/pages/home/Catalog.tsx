@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useSearchParams} from "react-router-dom";
-import {getCatalog} from "../../api/GET";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import {characterCatalogType} from "../../types/apiResponseTypes";
 import Hero from "./Hero";
@@ -9,6 +8,7 @@ import Pagination from "../../components/pagination/Pagination";
 import NotFound from "../../components/NotFound";
 import Loading from "../../components/Loading";
 import styles from "../../assets/css/pages/home/Catalog.module.css"
+import {fetchCharactersByPage} from "../../api/characters/fetchCharactersByPage";
 
 
 const Catalog = () => {
@@ -17,19 +17,15 @@ const Catalog = () => {
     let [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        (async function fetchCatalog() {
-            setCatalog(null);
-            await getCatalog(window.location.search)
-                .then(data => {
-                    setCatalog({
-                        info: data.info,
-                        characters: data.results
-                    })
+        setCatalog(null);
+        fetchCharactersByPage(window.location.search)
+            .then(data => {
+                setCatalog({
+                    info: data.info,
+                    characters: data.results
                 })
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
-
-
-        })();
+            })
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
 
     }, [searchParams])
     return (

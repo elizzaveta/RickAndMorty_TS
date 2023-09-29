@@ -11,7 +11,6 @@ type propsType = {
     }
 }
 
-
 const QuizCard = (props: propsType) => {
     const {question} = props;
 

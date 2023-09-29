@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {characterType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
-import {getCharacter} from "../../api/GET";
 import NotFound from "../../components/NotFound";
 import Loading from "../../components/Loading";
 import CharacterMainInfo from "./CharacterMainInfo";
 import CharacterLocations from "./CharacterLocations";
 import CharacterEpisodes from "./CharacterEpisodes";
 import styles from "../../assets/css/pages/character/Character.module.css"
+import {fetchCharacter} from "../../api/characters/fetchCharacter";
 
 const Character = () => {
     const {id} = useParams();
@@ -16,11 +16,9 @@ const Character = () => {
     const [alt, setAlt] = useState<JSX.Element>(<Loading/>)
 
     useEffect(() => {
-        (async function () {
-            await getCharacter(id)
-                .then(data => setCharacter(data))
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
-        })();
+        fetchCharacter(id)
+            .then(data => setCharacter(data))
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>));
     }, [id])
 
 

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {getLocation} from "../../api/GET";
 import {locationType} from "../../types/apiResponseTypes";
 import {NotFoundEnum} from "../../enums/NotFoundEnum";
 import {getIdsFromUrls} from "../../utils/functions";
@@ -8,6 +7,7 @@ import Loading from "../../components/Loading";
 import NotFound from "../../components/NotFound";
 import Characters from "../episode/Characters";
 import styles from "../../assets/css/pages/location/Location.module.css"
+import {fetchLocation} from "../../api/locations/fetchLocation";
 
 const Location = () => {
     const {id} = useParams()
@@ -16,14 +16,12 @@ const Location = () => {
     const [residentsIds, setResidentsIds] = useState<number[]>([])
 
     useEffect(() => {
-        (async function () {
-            await getLocation(id)
-                .then(data => {
-                    setLocation(data);
-                    setResidentsIds(getIdsFromUrls(data.residents));
-                })
-                .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>))
-        })()
+        fetchLocation(id)
+            .then(data => {
+                setLocation(data);
+                setResidentsIds(getIdsFromUrls(data.residents));
+            })
+            .catch(() => setAlt(<NotFound type={NotFoundEnum.NO_RESULT}/>))
     }, [id])
 
     return (
